@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class HeronFormula {
+    public static void main(String[] args) throws Exception {
+        Scanner keyboard = new Scanner(System.in);
+
+        System.out.println("Please enter the value for side a:");
+        double sideA = keyboard.nextDouble();
+        System.out.println("Please enter the value for side b");
+        double sideB = keyboard.nextDouble();
+        System.out.println("Please enter the value for side c");
+        double sideC = keyboard.nextDouble();
+        keyboard.close();
+
+
+        double area = Math.sqrt (4 * sideA * sideA * sideB * sideB - Math.pow(sideA * sideA + sideB * sideB - sideC * sideC, 2))*1/4;
+        System.out.println ("The area is: " + area);
+
+    }
+}
