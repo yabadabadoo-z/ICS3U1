@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class AmbiguousCase {
+    public static void main(String[] args) throws Exception {
+        Scanner keyboard = new Scanner(System.in);
+        
+        System.out.println("Please enter a value for side a:");
+        double a = keyboard.nextDouble();
+        System.out.println("Please enter a value for side b:");
+        double b = keyboard.nextDouble();
+        System.out.println("Please enter a value for angle A:");
+        double angleA = keyboard.nextDouble();
+        keyboard.close();
+        double h = b * Math.sin(Math.toRadians(angleA));
+        
+        if (angleA <= 90) {
+            if (a < h && a < b){
+                System.out.println ("There is no triangle");
+            }
+            else if (a == h){
+                System.out.println ("It is a right triangle");
+            } 
+            else if (a > b){
+                System.out.println ("There is one triangle");
+            }
+            else {
+                System.out.println ("This is an ambiguous triangle");
+            }
+        }
+        else{
+            if (a <= b){
+                System.out.println ("There is no triangle");
+            }
+            else {
+                System.out.println ("There is one triangle");
+            }
+        }
+    }
+}
