@@ -14,25 +14,20 @@ public class AmbiguousCase {
         double h = b * Math.sin(Math.toRadians(angleA));
         
         if (angleA <= 90) {
-            if (a < h && a < b){
-                System.out.println ("There is no triangle");
-            }
-            else if (a == h){
-                System.out.println ("It is a right triangle");
-            } 
-            else if (a > b){
-                System.out.println ("There is one triangle");
-            }
-            else {
+            if (a < h && a < b) {
+                System.out.println ("There are no triangle");
+            } else if (a == h) {
+                System.out.println ("It is a right-angled triangle");
+            } else if (a > b) {
+                System.out.println ("There is a triangle");
+            } else {
                 System.out.println ("This is an ambiguous triangle");
             }
-        }
-        else{
-            if (a <= b){
-                System.out.println ("There is no triangle");
-            }
-            else {
-                System.out.println ("There is one triangle");
+        } else {
+            if (a <= b) {
+                System.out.println ("There are no triangle");
+            } else {
+                System.out.println ("There is a triangle");
             }
         }
     }
