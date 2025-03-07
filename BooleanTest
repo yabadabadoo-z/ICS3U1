@@ -12,6 +12,7 @@ public class BooleanTest {
         boolean C = scanner.nextBoolean();
         System.out.println("Please enter your value for D");
         boolean D = scanner.nextBoolean();
+        keyboard.close();
         
         boolean output = (B && !D) ||(!B && !C && D) || (!A && !B && !C) || (A && C && !D);
         System.out.println("Your value is " + output);
