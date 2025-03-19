@@ -1,34 +1,26 @@
 import java.util.Scanner;
 
-public class AmbiguousCase {
-    public static void main(String[] args) throws Exception {
-        Scanner keyboard = new Scanner(System.in);
-        
-        System.out.println("Please enter a value for side a:");
-        double a = keyboard.nextDouble();
-        System.out.println("Please enter a value for side b:");
-        double b = keyboard.nextDouble();
-        System.out.println("Please enter a value for angle A:");
-        double angleA = keyboard.nextDouble();
-        keyboard.close();
-        double h = b * Math.sin(Math.toRadians(angleA));
-        
-        if (angleA <= 90) {
-            if (a < h && a < b) {
-                System.out.println ("There are no triangle");
-            } else if (a == h) {
-                System.out.println ("It is a right-angled triangle");
-            } else if (a > b) {
-                System.out.println ("There is a triangle");
-            } else {
-                System.out.println ("This is an ambiguous triangle");
+public class NewtonsMethod {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        char input;
+        do {
+            System.out.println("Please enter your starting estimate");
+            double estimate = scanner.nextDouble();
+            double prevEstimate = estimate + 1;
+
+            while (Math.abs(prevEstimate - estimate) > 0.000000000001) {
+                prevEstimate = estimate;
+                double fx = 6 * Math.pow(estimate, 4) - 13 * Math.pow(estimate, 3) - 18 * Math.pow(estimate, 2) + 7 * estimate + 6;
+                double fpx = 24 * Math.pow(estimate, 3) - 39 * Math.pow(estimate, 2) - 36 * estimate + 7;
+                estimate = prevEstimate - fx/fpx;
+                System.out.println(estimate);
             }
-        } else {
-            if (a <= b) {
-                System.out.println ("There are no triangle");
-            } else {
-                System.out.println ("There is a triangle");
-            }
-        }
+
+            System.out.println("Your approximate root: " + estimate);
+            System.out.println("Do you wish to try again?");
+            input = scanner.next().toLowerCase().charAt(0);
+        } while (input == 'y');
+        scanner.close();
     }
 }
