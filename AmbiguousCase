@@ -7,7 +7,7 @@ public class NewtonsMethod {
         do {
             System.out.println("Please enter your starting estimate");
             double estimate = scanner.nextDouble();
-            double prevEstimate = estimate + 1;
+            double prevEstimate = 0.0;
 
             while (Math.abs(prevEstimate - estimate) > 0.000000000001) {
                 prevEstimate = estimate;
