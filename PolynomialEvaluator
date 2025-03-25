@@ -1,0 +1,35 @@
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
+public class PolynomialEvaluator {
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+
+        System.out.println("Please enter your polynomial (Format: f(x)= 3x^2 +3x +3): ");
+        StringTokenizer tokenizer = new StringTokenizer(keyboard.nextLine().replace("f(x)=", ""), " ");
+
+        System.out.println("Please enter your x value: ");
+        double x = keyboard.nextDouble();
+        keyboard.close();
+
+        double result = 0.0;
+
+        while (tokenizer.hasMoreTokens()) {
+            String token = tokenizer.nextToken();
+
+            // Find index at certain symbols
+            int xIndex = token.indexOf('x');
+            int expIndex = token.indexOf('^');
+
+            double coefficient = (xIndex != -1) ? Double.parseDouble(token.substring(0, xIndex))
+                    : Double.parseDouble(token);
+
+            int exponent = (xIndex != -1) ? ((expIndex != -1) ? Integer.parseInt(token.substring(expIndex + 1)) : 1)
+                    : 0;
+
+            // Formula to add the value of the current token to the overall result
+            result += coefficient * Math.pow(x, exponent);
+        }
+
+        System.out.println("f(" + x + ")= " + result);
+    }
