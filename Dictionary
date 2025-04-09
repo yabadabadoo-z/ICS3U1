@@ -1,0 +1,40 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class Dictionary {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter a sentence in English: ");
+        String sentence = scanner.nextLine();
+        
+        HashSet dictionary = new HashSet();
+        BufferedReader reader = null;
+        
+        try {
+            reader = new BufferedReader(new FileReader("dictionary.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                dictionary.add(line.toLowerCase());
+
+            }
+            String[] words = sentence.split(" ");
+            
+            for (int i = 0; i < words.length; i++) {
+                String legalWord = words[i].toLowerCase();
+                if (dictionary.contains(legalWord)) {
+                    System.out.println(words[i] + " <valid>");
+                } else {
+                    System.out.println(words[i] + " <invalid>");
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error: IOException.");
+        } finally {
+            scanner.close();
+        }
+    }
+}
